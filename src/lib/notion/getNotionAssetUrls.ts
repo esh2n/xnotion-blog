@@ -31,6 +31,7 @@ export default async function getNotionAsset(
   })
 
   if (assetRes.ok) {
+    console.log(assetRes.json())
     return assetRes.json()
   } else {
     console.log('bad request', assetRes.status)

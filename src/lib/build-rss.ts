@@ -74,16 +74,18 @@ function createRSS(blogPosts = []) {
 
 async function main() {
   await loadEnvConfig(process.cwd())
-  serverConstants.NOTION_TOKEN = process.env.NOTION_TOKEN
-  serverConstants.BLOG_INDEX_ID = serverConstants.normalizeId(
-    process.env.BLOG_INDEX_ID
-  )
+  // serverConstants.NOTION_TOKEN = process.env.NOTION_TOKEN
+  // serverConstants.BLOG_INDEX_ID = serverConstants.normalizeId(
+  //   process.env.BLOG_INDEX_ID
+  // )
 
   const postsTable = await getBlogIndex(true)
   const neededAuthors = new Set<string>()
+  console.log(postsTable)
 
   const blogPosts = Object.keys(postsTable)
     .map((slug) => {
+      console.log(slug)
       const post = postsTable[slug]
       if (!postIsPublished(post)) return
 
